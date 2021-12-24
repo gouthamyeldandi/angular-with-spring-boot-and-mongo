@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
-        maven "m3"
+        maven "M3"
     }
 
     stages {
@@ -13,8 +13,9 @@ pipeline {
                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn clean package"
-
+                sh "mvn clean"
+                sh "mvn compile"
+                sh "mvn install -DskipTests"
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
