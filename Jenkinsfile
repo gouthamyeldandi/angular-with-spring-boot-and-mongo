@@ -10,11 +10,10 @@ pipeline {
         stage('Build & package') {
             steps {
                 // Get some code from a GitHub repository
-                git 'clone https://github.com/jglick/simple-maven-project-with-tests.git'
+                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
 
-                sh "mvn clean"
-                sh "mvn compile"
-                sh "mvn install -DskipTests"
+     
+                sh "mvn clean install -DskipTests"
                               
             }
 
