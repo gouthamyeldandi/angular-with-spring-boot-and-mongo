@@ -1,45 +1,23 @@
-pipeline{
-        
-        agent any
-        
-        stages {
-            
-            stage ('maven tool'){
-                
-                step{
-                withMaven(maven : 'M3')
-                
-                }
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo.git'
+
+                // Run Maven on a Unix agent.
+                sh "mvn clean compile"
+
                 
             }
-            
-            stage('clean'){
-                
-                step{
-                 
-                 sh "mvn clean"   
-                    
-                }
-               
-            }
-            stage('compile'){
-                
-                step{
-                 
-                 sh "mvn compile"   
-                    
-                }
-               
-            }
-            stage('install '){
-                
-                step{
-                 
-                 sh "mvn install -DskipTests"   
-                    
-                }
-               
-            }
-            
-            
-            
+
+        }
+    }
+}
