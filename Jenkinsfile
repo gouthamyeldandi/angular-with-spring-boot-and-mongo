@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'hhttps://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo.git'
+                git 'https://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn clean compile"
