@@ -13,7 +13,7 @@ pipeline {
                 git 'https://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn clean compile"
+                sh 'mvn clean'
 
             }
 
@@ -21,7 +21,7 @@ pipeline {
         stage('run') {
             steps {
                 
-                sh "mvn install -DskipTests"
+                sh 'mvn install -DskipTests'
 
             }
 
