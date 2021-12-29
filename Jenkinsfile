@@ -10,18 +10,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo.git'
+                git 'https://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo'
 
-                sh 'mvn clean'
-            }
-            
-            steps {
-                sh 'mvn compile'
-            }
-            steps {
-                sh 'mvn install -DskipTests'
-            }
+                // Run Maven on a Unix agent.
+                sh "mvn clean package"
 
+                // To run Maven on a Windows agent, use
+                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
 
             post {
                 // If Maven was able to run the tests, even if some of the test
