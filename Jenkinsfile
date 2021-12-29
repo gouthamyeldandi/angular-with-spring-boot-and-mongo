@@ -17,7 +17,7 @@ pipeline {
             stage('build') {
               steps {
                 
-                mvn'clean install -DskipTests'
+                mvn"clean install -DskipTests"
 
               }
 
