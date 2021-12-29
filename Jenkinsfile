@@ -10,7 +10,7 @@ pipeline {
         stage('gitclone') {
             steps {
                 // Get some code from a GitHub repository
-                git 'clone https://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo.git'
+                git clone 'https://github.com/gouthamyeldandi/angular-with-spring-boot-and-mongo.git'
 
             }
         }    
